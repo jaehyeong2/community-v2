@@ -17,8 +17,10 @@
             <input type="password" class="form-control form-control-lg" placeholder="패스워드를 입력하세요" name="password" id="password">
         </div>
 
-        <input type="submit" value="로그인" href="/" class="btn btn-dark btn-block" style="margin-top: 30px" >
-        <br>
+            <input type="submit" value="로그인" href="/" class="btn btn-dark btn-block col-sm-1 " style="display:inline-block" >
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=19ec158ac89f2be7a8713d1bec482fb9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img height="38px" src="/images/kakao_login_button.png" /></a>
+
+        <br /> <br />
         <span > 아직 계정이 없으신가요? <a class="linkControl" href="/auth/signup">회원가입</a></span>
         <br>
     </form>
