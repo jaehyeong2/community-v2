@@ -35,7 +35,7 @@ let index = {
     },
 
     deleteById: function(){
-        let id = $("#id").val();
+        let id = $("#id").text();
 
         $.ajax({
             type: "DELETE",

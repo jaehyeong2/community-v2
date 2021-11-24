@@ -16,7 +16,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional(readOnly = true)
-    public Page<Board> getAllBoards(Pageable pageable){
+    public Page<Board> getBoardList(Pageable pageable){
         return boardRepository.findAll(pageable);
     }
 
@@ -34,10 +34,11 @@ public class BoardService {
 
     @Transactional
     public void updateBoardById(int id, Board requestBoard){
-        Board board = boardRepository.findById(id).orElseThrow();
+        Board board = boardRepository.findById(id).orElseThrow(()->{
+           return new IllegalArgumentException("글 찾기 실패 : 아이디를 찾을 수 없습니다.");
+        }); // 영속화 완료
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
-        boardRepository.deleteById(id);
     }
 
     @Transactional(readOnly = true)

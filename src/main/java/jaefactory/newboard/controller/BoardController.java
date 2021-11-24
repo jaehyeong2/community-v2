@@ -22,25 +22,19 @@ public class BoardController {
 
     @GetMapping("/board/add")
     public String addBoardGet(Model model){
-
-//        board.setCategory(categoryService.getCategoryById(boardDto.getCategoryId()).get());
-//        model.addAttribute("boardDto",new BoardDto());
-//        model.addAttribute("board",new Board());
         return "/board/saveForm";
     }
-//
-//    @GetMapping("/board/detail/{boardId}")
-//    public String boardDetail(@PathVariable int boardId,Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-//        model.addAttribute("board",boardService.getBoardById(boardId));
-//        model.addAttribute("user",principalDetails);
-//        model.addAttribute("replies",replyService.getAllRepliesByBoardId(boardId));
-//        return "boardDetails";
-//    }
-//
-//    @GetMapping("/board/update/{id}")
-//    public String boardUpdate(@PathVariable int id, Model model) {
-//        model.addAttribute("board", boardService.getBoardById(id));
-//        return "boardUpdate";
-//    }
-//
+
+    @GetMapping("/board/{boardId}")
+    public String boardDetail(@PathVariable int boardId, Model model) {
+        model.addAttribute("board",boardService.getBoardById(boardId));
+        return "/board/detail";
+    }
+
+    @GetMapping("/board/update/{id}")
+    public String boardUpdate(@PathVariable int id, Model model) {
+        model.addAttribute("board", boardService.getBoardById(id));
+        return "/board/updateForm";
+    }
+
 }
