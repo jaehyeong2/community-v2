@@ -19,16 +19,16 @@ public class UserController {
     private final UserService userService;
     private final BoardService boardService;
 
-//    @GetMapping("/user/{id}")
-//    public String profile(@PathVariable long id){
-//        return "profile";
-//    }
-//
-//    @GetMapping("/user/{id}/update")
-//    public String profileUpdate(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model){
-//        model.addAttribute("principal",principalDetails.getUser());
-//        return "profile";
-//    }
+    @GetMapping("/user/{id}")
+    public String profile(@PathVariable long id){
+        return "profile";
+    }
+
+    @GetMapping("/user/{id}/update")
+    public String profileUpdate(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model){
+        model.addAttribute("principal",principalDetails.getUser());
+        return "profile";
+    }
 }
 
 

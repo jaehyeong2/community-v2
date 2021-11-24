@@ -13,16 +13,16 @@ public class AdminController {
 
     private final BoardService boardService;
 
-//    @GetMapping("/admin")
-//    public String adminHome(){
-//        return "admin";
-//    }
-//
-//    @GetMapping("/admin/boards/add")
-//    public String boardAddGet(Model model){
-//        model.addAttribute("boardDto",new BoardDto());
-////        model.addAttribute("categories",categoryService.getAllCategories());
-//        return "boardSave";
-//    }
+    @GetMapping("/admin")
+    public String adminHome(){
+        return "admin";
+    }
+
+    @GetMapping("/admin/boards/add")
+    public String boardAddGet(Model model){
+        model.addAttribute("boardDto",new BoardDto());
+//        model.addAttribute("categories",categoryService.getAllCategories());
+        return "boardSave";
+    }
 
 }

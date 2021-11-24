@@ -20,32 +20,32 @@ import java.util.Map;
 @Controller
 public class AuthController {
 
-//    private final AuthService authService;
-//
-//    @GetMapping("/signup")
-//    public String signUpForm() {
-//        return "signup";
-//    }
-//
-//    @GetMapping("/signin")
-//    public String signInForm() {
-//        return "signin";
-//    }
-//
-//    @PostMapping("/signup")
-//    public String signUp(@Valid SignUpDto signUpDto, BindingResult bindingResult) {
-//
-//        if (bindingResult.hasErrors()) {
-//            Map<String, String> errorMap = new HashMap<>();
-//
-//            for (FieldError error : bindingResult.getFieldErrors()) {
-//                errorMap.put(error.getField(), error.getDefaultMessage());
-//            }
-//            throw new CustomValidationException("유효성 검사 실패", errorMap);
-//        } else {
-//            User user = signUpDto.toEntity();
-//            User userEntity = authService.join(user);
-//            return "signin";
-//        }
-//    }
+    private final AuthService authService;
+
+    @GetMapping("/auth/signup")
+    public String signUpForm() {
+        return "/auth/signup";
+    }
+
+    @GetMapping("/auth/signin")
+    public String signInForm() {
+        return "/auth/signin";
+    }
+
+    @PostMapping("/auth/signup")
+    public String signUp(@Valid SignUpDto signUpDto, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errorMap = new HashMap<>();
+
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errorMap.put(error.getField(), error.getDefaultMessage());
+            }
+            throw new CustomValidationException("유효성 검사 실패", errorMap);
+        } else {
+            User user = signUpDto.toEntity();
+            User userEntity = authService.join(user);
+            return "/auth/signin";
+        }
+    }
 }

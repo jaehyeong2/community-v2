@@ -21,11 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/", "/shop/**", "/signup","/css/**","/js/**","/images/**").permitAll()
+                .antMatchers("/", "/auth/**","/css/**","/js/**","/images/**").permitAll()
 //                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/signin").permitAll()
-                .loginProcessingUrl("/signin").defaultSuccessUrl("/");
+                .formLogin().loginPage("/auth/signin").permitAll()
+                .loginProcessingUrl("/auth/signin").defaultSuccessUrl("/");
     }
 }
