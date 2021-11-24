@@ -23,7 +23,7 @@ public class BoardApiController {
         return new BoardDto<Integer>(1,1);
     }
 
-    @DeleteMapping("/api/board/(id)")
+    @DeleteMapping("/api/board/{id}")
     public BoardDto<?> delete(@PathVariable int id){
         boardService.deleteBoardById(id);
         return new BoardDto<Integer>(1,1);
