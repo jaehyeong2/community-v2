@@ -22,11 +22,13 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="/">Cos</a>
+    <a class="navbar-brand" href="/" >
+        <img src="/images/logo.png" src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 
         <c:choose>
             <c:when test="${empty principal}">
@@ -37,7 +39,7 @@
             </c:when>
             <c:otherwise>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/board/saveForm">글쓰기</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/board/add">글쓰기</a></li>
                     <li class="nav-item"><a class="nav-link" href="/user/updateForm">회원정보</a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </ul>

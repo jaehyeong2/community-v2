@@ -20,14 +20,14 @@ public class BoardController {
     private final BoardService boardService;
 
 
-//    @GetMapping("/board/add")
-//    public String addBoardGet(Model model){
-//
-////        board.setCategory(categoryService.getCategoryById(boardDto.getCategoryId()).get());
-////        model.addAttribute("boardDto",new BoardDto());
-////        model.addAttribute("board",new Board());
-//        return "boardSave";
-//    }
+    @GetMapping("/board/add")
+    public String addBoardGet(Model model){
+
+//        board.setCategory(categoryService.getCategoryById(boardDto.getCategoryId()).get());
+//        model.addAttribute("boardDto",new BoardDto());
+//        model.addAttribute("board",new Board());
+        return "/board/saveForm";
+    }
 //
 //    @GetMapping("/board/detail/{boardId}")
 //    public String boardDetail(@PathVariable int boardId,Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
