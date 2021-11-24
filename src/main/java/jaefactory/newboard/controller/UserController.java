@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -24,10 +25,14 @@ public class UserController {
         return "profile";
     }
 
-    @GetMapping("/user/{id}/update")
-    public String profileUpdate(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model){
-        model.addAttribute("principal",principalDetails.getUser());
-        return "profile";
+    @GetMapping("/user/update")
+    public String update(){
+        return "/user/updateForm";
+    }
+
+    @PostMapping("/user/update")
+    public String profileUpdate(){
+        return "/user/updateForm";
     }
 }
 
