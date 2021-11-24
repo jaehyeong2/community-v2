@@ -25,10 +25,11 @@ public class Reply {
     private User user;
 
     @JoinColumn(name = "board_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Board board;
 
     private LocalDateTime createDate;
+
     @PrePersist
     public void createDate() { this.createDate = LocalDateTime.now();}
 }

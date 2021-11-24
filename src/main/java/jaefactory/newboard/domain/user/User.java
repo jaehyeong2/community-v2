@@ -33,6 +33,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    private String oauth;
+
     private String role;  //USER,ADMIN
 
     private LocalDateTime createDate;

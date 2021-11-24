@@ -1,6 +1,10 @@
 package jaefactory.newboard.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jaefactory.newboard.domain.token.OAuthToken;
 import jaefactory.newboard.domain.user.User;
 import jaefactory.newboard.dto.SignUpDto;
 import jaefactory.newboard.handler.exception.CustomValidationException;
@@ -69,6 +73,18 @@ public class AuthController {
                 kakaoTokenRequest,
                 String.class
         );
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        OAuthToken oAuthToken = null;
+        try {
+            oAuthToken = objectMapper.readValue(response.getBody(),OAuthToken.class);
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        }
+        catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
         return "요청 값:"+response;
     }
 

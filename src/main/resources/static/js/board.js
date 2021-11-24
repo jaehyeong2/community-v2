@@ -12,6 +12,9 @@ let index = {
         $("#btn-reply-save").on("click", ()=>{
             this.replySave();
         });
+        $("#btn-reply-delete").on("click", ()=>{
+            this.replyDelete();
+        });
     },
 
     save: function(){

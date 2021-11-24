@@ -31,7 +31,7 @@ public class Board {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board",cascade = CascadeType.REMOVE)
     private List<Reply> replies = new ArrayList<>();
 
     @PrePersist
