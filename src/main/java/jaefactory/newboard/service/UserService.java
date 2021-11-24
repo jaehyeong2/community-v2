@@ -19,7 +19,7 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional(readOnly = true)
-    public UserProfileDto userProfile(long pageUserId, long principalId) {
+    public UserProfileDto userProfile(int pageUserId, int principalId) {
         UserProfileDto dto = new UserProfileDto();
 
         User userEntity = userRepository.findById(pageUserId).get();
@@ -31,7 +31,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> getUserById(long id){
+    public Optional<User> getUserById(int id){
         return userRepository.findById(id);
     }
 }

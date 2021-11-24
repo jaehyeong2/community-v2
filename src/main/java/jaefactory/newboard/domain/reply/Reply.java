@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter @Setter
 @Entity
@@ -14,7 +15,7 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "reply_id")
-    private Long id;
+    private int id;
 
     @Column(nullable = false, length = 200)
     private String content;
@@ -27,4 +28,7 @@ public class Reply {
     @ManyToOne
     private Board board;
 
+    private LocalDateTime createDate;
+    @PrePersist
+    public void createDate() { this.createDate = LocalDateTime.now();}
 }
