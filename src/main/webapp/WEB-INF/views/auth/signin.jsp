@@ -18,7 +18,7 @@
         </div>
 
             <input type="submit" value="로그인" href="/" class="btn btn-dark btn-block col-sm-1 " style="display:inline-block" >
-            <a href="https://kauth.kakao.com/oauth/authorize?client_id=19ec158ac89f2be7a8713d1bec482fb9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img height="38px" src="/images/kakao_login_button.png" /></a>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=19ec158ac89f2be7a8713d1bec482fb9&redirect_uri=http://http://13.209.86.236:8080//auth/kakao/callback&response_type=code"><img height="38px" src="/images/kakao_login_button.png" /></a>
 
         <br /> <br />
         <span > 아직 계정이 없으신가요? <a class="linkControl" href="/auth/signup">회원가입</a></span>

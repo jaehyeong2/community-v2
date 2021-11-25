@@ -7,7 +7,7 @@
         <input type="hidden" id="id" value="${principal.user.id}" />
 
         <div class="form-group">
-            <label for="realName">이름</label>
+            <label for="realName">이름 (수정가능)</label>
             <input type="text" value="${principal.user.realName}" id="realName" class="form-control form-control-lg" maxlength="20">
         </div>
 
@@ -18,7 +18,7 @@
 
         <c:if test="${empty principal.user.oauth}">
             <div class="form-group">
-                <label for="password">패스워드</label>
+                <label for="password">패스워드 (수정가능)</label>
                 <input type="password" class="form-control"  id="password">
             </div>
         </c:if>
