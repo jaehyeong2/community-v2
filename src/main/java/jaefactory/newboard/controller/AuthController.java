@@ -10,12 +10,17 @@ import jaefactory.newboard.domain.user.User;
 import jaefactory.newboard.dto.SignUpDto;
 import jaefactory.newboard.handler.exception.CustomValidationException;
 import jaefactory.newboard.service.AuthService;
+import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -37,7 +42,10 @@ public class AuthController {
     @Value("${kakao.key}")
     private String kakaoKey;
 
+    private final UserService userService;
     private final AuthService authService;
+    private final AuthenticationManager authenticationManager;
+
     private String CLIENT_CODE = "19ec158ac89f2be7a8713d1bec482fb9";
 
     @GetMapping("/auth/signup")
@@ -50,7 +58,6 @@ public class AuthController {
         return "/auth/signin";
     }
 
-    @ResponseBody
     @GetMapping("/auth/kakao/callback")
     public String kakaoCallback(String code){
 
@@ -136,7 +143,15 @@ public class AuthController {
                 .oauth("kakao")
                 .build();
 
-        return "요청 값:"+response;
+        User originUser = userService.findUser(kakaoUser.getUsername());
+        if(originUser.getUsername() == null) {
+            authService.join(kakaoUser);
+        }
+
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), kakaoKey));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return "redirect:/";
     }
 
     @PostMapping("/auth/signup")

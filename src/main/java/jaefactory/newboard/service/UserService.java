@@ -18,6 +18,15 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
 
+    @Transactional(readOnly = true)
+    public User findUser(String username){
+        User user = userRepository.findByUsername(username).orElseGet(()->{
+            return new User();
+        });
+        return user;
+    }
+
+
     @Transactional
     public void userUpdate(User user) {
         User persistence = userRepository.findById(user.getId()).orElseThrow(()->{

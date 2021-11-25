@@ -23,8 +23,6 @@ public class User {
 
     @Column(unique = true)
     private String username;//아이디
-
-    @Column(nullable = false)
     private String realName; //이름
 
     @Column(nullable = false)
