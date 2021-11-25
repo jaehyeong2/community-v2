@@ -1,10 +1,8 @@
 package jaefactory.newboard.controller;
 
-import jaefactory.newboard.dto.BoardDto;
 import jaefactory.newboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
@@ -18,11 +16,11 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/admin/boards/add")
-    public String boardAddGet(Model model){
-        model.addAttribute("boardDto",new BoardDto());
-//        model.addAttribute("categories",categoryService.getAllCategories());
-        return "boardSave";
-    }
+//    @GetMapping("/admin/boards/add")
+//    public String boardAddGet(Model model){
+//        model.addAttribute("boardDto",new BoardDto());
+////        model.addAttribute("categories",categoryService.getAllCategories());
+//        return "boardSave";
+//    }
 
 }

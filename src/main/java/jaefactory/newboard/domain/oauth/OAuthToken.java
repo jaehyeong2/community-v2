@@ -1,4 +1,4 @@
-package jaefactory.newboard.domain.token;
+package jaefactory.newboard.domain.oauth;
 
 import lombok.Data;
 

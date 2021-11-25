@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    private final UserService userService;
-    private final BoardService boardService;
-
     @GetMapping("/user/{id}")
     public String profile(@PathVariable long id){
         return "profile";

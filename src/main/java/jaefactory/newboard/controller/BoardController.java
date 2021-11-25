@@ -1,11 +1,7 @@
 package jaefactory.newboard.controller;
 
-import jaefactory.newboard.config.auth.PrincipalDetails;
 import jaefactory.newboard.service.BoardService;
-import jaefactory.newboard.service.ReplyService;
-import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class BoardController {
 
-    private final UserService userService;
-    private final ReplyService replyService;
     private final BoardService boardService;
-
 
     @GetMapping("/board/add")
     public String addBoardGet(Model model){

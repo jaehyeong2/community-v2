@@ -16,7 +16,6 @@ public class ReplyService {
 
     private final ReplyRepository replyRepository;
 
-
     @Transactional(readOnly = true)
     public List<Reply> getAllReplies() {
         return replyRepository.findAll();

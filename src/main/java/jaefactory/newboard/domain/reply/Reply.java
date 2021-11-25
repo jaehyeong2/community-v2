@@ -25,7 +25,7 @@ public class Reply {
     private User user;
 
     @JoinColumn(name = "board_id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Board board;
 
     private LocalDateTime createDate;
