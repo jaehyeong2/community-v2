@@ -21,7 +21,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public User findUser(String username){
         User user = userRepository.findByUsername(username).orElseGet(()->{
-            return new User();
+            return new User(); // 빈 객체 리턴
         });
         return user;
     }
@@ -34,12 +34,12 @@ public class UserService {
         });
 
         // Validate 체크 => oauth 필드에 값이 없으면 수정 가능
-//        if(persistance.getOauth() == null || persistance.getOauth().equals("")) {
+        if(persistence.getOauth() == null || persistence.getOauth().equals("")) {
             String rawPassword = user.getPassword();
             String encPassword = encoder.encode(rawPassword);
             persistence.setPassword(encPassword);
             persistence.setRealName(user.getRealName());
-//        }
+        }
     }
 
     @Transactional(readOnly = true)

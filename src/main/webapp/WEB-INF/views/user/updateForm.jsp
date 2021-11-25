@@ -16,12 +16,12 @@
             <input type="text" value="${principal.user.username}" class="form-control"  id="username" readonly>
         </div>
 
-<%--        <c:if test="${empty principal.user.oauth}">--%>
+        <c:if test="${empty principal.user.oauth}">
             <div class="form-group">
                 <label for="password">패스워드</label>
                 <input type="password" class="form-control"  id="password">
             </div>
-<%--        </c:if>--%>
+        </c:if>
 
         <div class="form-group">
             <label for="email">Email</label>

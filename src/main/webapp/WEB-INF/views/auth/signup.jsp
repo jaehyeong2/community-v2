@@ -30,7 +30,7 @@
             <small id="emailHelp" class="form-text text-muted">이메일은 다른 용도로 사용되지 않습니다</small>
         </div>
 
-        <input type="submit" value="회원가입" href="/" class="btn btn-dark btn-block" style="margin-top: 30px" >
+        <input id= "save" type="submit" value="회원가입" href="/" class="btn btn-dark btn-block" style="margin-top: 30px" >
         <br>
         <span > 이미 계정이 있으신가요? <a class="linkControl" href="/auth/signin">로그인</a></span>
         <br>
