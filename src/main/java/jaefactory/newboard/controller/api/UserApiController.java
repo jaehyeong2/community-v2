@@ -3,6 +3,7 @@ package jaefactory.newboard.controller.api;
 
 import jaefactory.newboard.domain.user.User;
 import jaefactory.newboard.dto.CommonResDto;
+import jaefactory.newboard.service.AuthService;
 import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserApiController {
 
+    private final AuthService authService;
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
+
+    @PostMapping("/api/user/join")
+    public CommonResDto<?> save(@RequestBody User user) {
+        authService.join(user);
+        return new CommonResDto<Integer>(HttpStatus.OK.value(),"ok", 1);
+    }
 
     @PutMapping("/user")
     public CommonResDto<?> update(@RequestBody User user) { // key=value, x-www-form-urlencoded

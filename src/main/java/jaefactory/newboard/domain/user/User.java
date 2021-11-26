@@ -22,7 +22,7 @@ public class User {
     private int id;
 
     @Column(unique = true)
-    private String username;//아이디
+    private String username; //아이디
     private String realName; //이름
 
     @Column(nullable = false)
@@ -35,10 +35,10 @@ public class User {
 
     private String role;  //USER,ADMIN
 
-    private LocalDateTime createDate;
-
     @OneToMany(mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
+
+    private LocalDateTime createDate;
 
     @PrePersist
     public void createDate() { this.createDate = LocalDateTime.now();}

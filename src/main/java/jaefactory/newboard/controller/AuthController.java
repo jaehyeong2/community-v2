@@ -154,20 +154,20 @@ public class AuthController {
         return "redirect:/";
     }
 
-    @PostMapping("/auth/signup")
-    public String signUp(@Valid SignUpDto signUpDto, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errorMap = new HashMap<>();
-
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                errorMap.put(error.getField(), error.getDefaultMessage());
-            }
-            throw new CustomValidationException("유효성 검사 실패", errorMap);
-        } else {
-            User user = signUpDto.toEntity();
-            User userEntity = authService.join(user);
-            return "/auth/signin";
-        }
-    }
+//    @PostMapping("/auth/signup")
+//    public String signUp(@Valid SignUpDto signUpDto, BindingResult bindingResult) {
+//
+//        if (bindingResult.hasErrors()) {
+//            Map<String, String> errorMap = new HashMap<>();
+//
+//            for (FieldError error : bindingResult.getFieldErrors()) {
+//                errorMap.put(error.getField(), error.getDefaultMessage());
+//            }
+//            throw new CustomValidationException("유효성 검사 실패", errorMap);
+//        } else {
+//            User user = signUpDto.toEntity();
+//            User userEntity = authService.join(user);
+//            return "/auth/signin";
+//        }
+//    }
 }

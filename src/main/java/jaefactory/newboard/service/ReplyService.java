@@ -30,9 +30,4 @@ public class ReplyService {
     public void deleteReplyById(int id){
         replyRepository.deleteById(id);
     }
-
-    @Transactional(readOnly = true)
-    public List<Reply> getAllRepliesByBoardId(int boardId){
-        return replyRepository.findAllByBoardId(boardId);
-    }
 }

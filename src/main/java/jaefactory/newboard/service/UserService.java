@@ -26,7 +26,6 @@ public class UserService {
         return user;
     }
 
-
     @Transactional
     public void userUpdate(User user) {
         User persistence = userRepository.findById(user.getId()).orElseThrow(()->{
@@ -40,10 +39,5 @@ public class UserService {
             persistence.setPassword(encPassword);
             persistence.setRealName(user.getRealName());
         }
-    }
-
-    @Transactional(readOnly = true)
-    public Optional<User> getUserById(int id){
-        return userRepository.findById(id);
     }
 }

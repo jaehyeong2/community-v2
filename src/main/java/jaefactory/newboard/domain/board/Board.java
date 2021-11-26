@@ -18,14 +18,10 @@ public class Board {
     @Id
     @Column(name = "board_id")
     private int id;
-
     private String title;
 
     @Lob //용량 큰 데이터
     private String content;
-    
-    private int viewCount; //조회수
-    private LocalDateTime createDate;
 
     @JoinColumn(name = "user_id")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,6 +29,8 @@ public class Board {
 
     @OneToMany(mappedBy = "board",cascade = CascadeType.REMOVE)
     private List<Reply> replies = new ArrayList<>();
+
+    private LocalDateTime createDate;
 
     @PrePersist
     public void createDate() { this.createDate = LocalDateTime.now();}

@@ -14,7 +14,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/board/add")
-    public String addBoardGet(Model model){
+    public String addBoardGet(){
         return "/board/saveForm";
     }
 

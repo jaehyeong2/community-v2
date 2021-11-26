@@ -15,14 +15,30 @@ public class AuthService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Transactional
-    public User join(User user){
+//    @Transactional
+//    public User join(User user){
+//        String rawPassword = user.getPassword();
+//        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+//
+//        user.setPassword(encPassword);
+//        user.setRole("Role_USER");
+//        User userEntity = userRepository.save(user);
+//        return userEntity;
+//    }
+
+        @Transactional
+    public int join(User user){
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
 
         user.setPassword(encPassword);
         user.setRole("Role_USER");
-        User userEntity = userRepository.save(user);
-        return userEntity;
+            try {
+                userRepository.save(user);
+                return 1;
+            } catch (Exception e) {
+                return -1;
+            }
     }
+
 }
