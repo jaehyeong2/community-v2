@@ -29,5 +29,4 @@ public class BoardController {
         model.addAttribute("board", boardService.getBoardById(id));
         return "/board/updateForm";
     }
-
 }

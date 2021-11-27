@@ -7,8 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jaefactory.newboard.domain.oauth.KakaoProfile;
 import jaefactory.newboard.domain.oauth.OAuthToken;
 import jaefactory.newboard.domain.user.User;
-import jaefactory.newboard.dto.SignUpDto;
-import jaefactory.newboard.handler.exception.CustomValidationException;
 import jaefactory.newboard.service.AuthService;
 import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,16 +22,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @Controller
@@ -41,22 +31,11 @@ public class AuthController {
 
     @Value("${kakao.key}")
     private String kakaoKey;
+    private String CLIENT_CODE = "19ec158ac89f2be7a8713d1bec482fb9";
 
     private final UserService userService;
     private final AuthService authService;
     private final AuthenticationManager authenticationManager;
-
-    private String CLIENT_CODE = "19ec158ac89f2be7a8713d1bec482fb9";
-
-    @GetMapping("/auth/signup")
-    public String signUpForm() {
-        return "/auth/signup";
-    }
-
-    @GetMapping("/auth/signin")
-    public String signInForm() {
-        return "/auth/signin";
-    }
 
     @GetMapping("/auth/kakao/callback")
     public String kakaoCallback(String code){
@@ -77,7 +56,6 @@ public class AuthController {
         //헤더 바디 담기
         HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest =
                 new HttpEntity<>(params,headers);
-
 
         ResponseEntity<String> response = restTemplate.exchange(
                 "https://kauth.kakao.com/oauth/token",

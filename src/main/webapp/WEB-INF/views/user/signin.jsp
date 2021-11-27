@@ -6,7 +6,7 @@
 <div class="container">
 
     <h3 style="margin-top: 10px">로그인 페이지</h3>
-    <form action="/auth/signin" method="post">
+    <form action="/user/signin" method="post">
 
         <div class="form-group">
             <label for="username">아이디</label>
@@ -21,7 +21,7 @@
             <a href="https://kauth.kakao.com/oauth/authorize?client_id=19ec158ac89f2be7a8713d1bec482fb9&redirect_uri=http://13.209.86.236:8080//auth/kakao/callback&response_type=code"><img height="38px" src="/images/kakao_login_button.png" /></a>
 
         <br /> <br />
-        <span > 아직 계정이 없으신가요? <a class="linkControl" href="/auth/signup">회원가입</a></span>
+        <span > 아직 계정이 없으신가요? <a class="linkControl" href="/user/signup">회원가입</a></span>
         <br>
     </form>
 </div>

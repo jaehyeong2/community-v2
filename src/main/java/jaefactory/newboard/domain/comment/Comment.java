@@ -1,4 +1,4 @@
-package jaefactory.newboard.domain.reply;
+package jaefactory.newboard.domain.comment;
 
 import jaefactory.newboard.domain.board.Board;
 import jaefactory.newboard.domain.user.User;
@@ -10,18 +10,18 @@ import java.time.LocalDateTime;
 
 @Getter @Setter
 @Entity
-public class Reply {
+public class Comment {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "reply_id")
+    @Column(name = "comment_id")
     private int id;
 
     @Column(nullable = false, length = 200)
     private String content;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @JoinColumn(name = "board_id")

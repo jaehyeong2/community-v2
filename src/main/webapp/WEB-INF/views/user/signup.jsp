@@ -33,7 +33,7 @@
 
     <button id="btn-save" type="button" class="btn btn-dark btn-block col-sm-1" style="margin-top: 10px">회원가입</button>
         <br />
-        <span > 이미 계정이 있으신가요? <a class="linkControl" href="/auth/signin">로그인</a></span>
+        <span > 이미 계정이 있으신가요? <a class="linkControl" href="/user/signin">로그인</a></span>
         <br />
 </div>
 

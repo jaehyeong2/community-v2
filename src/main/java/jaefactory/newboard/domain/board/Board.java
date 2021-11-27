@@ -1,11 +1,12 @@
 package jaefactory.newboard.domain.board;
 
-import jaefactory.newboard.domain.reply.Reply;
+import jaefactory.newboard.domain.comment.Comment;
 import jaefactory.newboard.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,12 @@ public class Board {
     @Id
     @Column(name = "board_id")
     private int id;
+
+    @NotBlank
     private String title;
 
     @Lob //용량 큰 데이터
+    @NotBlank
     private String content;
 
     @JoinColumn(name = "user_id")
@@ -28,7 +32,7 @@ public class Board {
     private User user;
 
     @OneToMany(mappedBy = "board",cascade = CascadeType.REMOVE)
-    private List<Reply> replies = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
     private LocalDateTime createDate;
 

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>커뮤니티 사이트</title>
+    <title>커뮤니티</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -33,8 +33,8 @@
         <c:choose>
             <c:when test="${empty principal}">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/auth/signin">로그인</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/auth/signup">회원가입</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/signin">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/signup">회원가입</a></li>
                 </ul>
             </c:when>
             <c:otherwise>

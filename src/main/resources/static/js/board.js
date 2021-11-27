@@ -9,11 +9,11 @@ let index = {
         $("#btn-update").on("click", ()=>{
             this.update();
         });
-        $("#btn-reply-save").on("click", ()=>{
-            this.replySave();
+        $("#btn-comment-save").on("click", ()=>{
+            this.commentSave();
         });
-        $("#btn-reply-delete").on("click", ()=>{
-            this.replyDelete();
+        $("#btn-comment-delete").on("click", ()=>{
+            this.commentDelete();
         });
     },
 
@@ -74,16 +74,16 @@ let index = {
         });
     },
 
-    replySave: function(){
+    commentSave: function(){
         let data = {
             userId: $("#userId").val(),
             boardId: $("#boardId").val(),
-            content: $("#reply-content").val()
+            content: $("#comment-content").val()
         };
 
         $.ajax({
             type: "POST",
-            url: `/api/board/${data.boardId}/reply`,
+            url: `/api/board/${data.boardId}/comment`,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json"
@@ -95,10 +95,10 @@ let index = {
         });
     },
 
-    replyDelete : function(boardId, replyId){
+    commentDelete : function(boardId, commentId){
         $.ajax({
             type: "DELETE",
-            url: `/api/board/${boardId}/reply/${replyId}`,
+            url: `/api/comment/${commentId}`,
             dataType: "json"
         }).done(function(resp){
             alert("댓글삭제가 완료되었습니다");

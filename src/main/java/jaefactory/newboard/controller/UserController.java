@@ -16,6 +16,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
+    @GetMapping("/user/signup")
+    public String signUpForm() {
+        return "/user/signup";
+    }
+
+    @GetMapping("/user/signin")
+    public String signInForm() {
+        return "/user/signin";
+    }
+
     @GetMapping("/user/{id}")
     public String profile(@PathVariable long id){
         return "profile";
@@ -27,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping("/user/update")
-    public String profileUpdate(){
+    public String updatePost(){
         return "/user/updateForm";
     }
 }
