@@ -133,7 +133,6 @@ public class AuthController {
 
         System.out.println("블로그서버 유저네임 : "+kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId());
         System.out.println("블로그서버 이메일 : "+kakaoProfile.getKakao_account().getEmail());
-        // UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
         System.out.println("블로그서버 패스워드 : "+kakaoKey);
 
         User kakaoUser = User.builder()

@@ -26,13 +26,14 @@ public class AuthService {
 //        return userEntity;
 //    }
 
-        @Transactional
+    @Transactional
     public int join(User user){
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
 
         user.setPassword(encPassword);
         user.setRole("Role_USER");
+        user.setOauth("user");
             try {
                 userRepository.save(user);
                 return 1;

@@ -3,6 +3,7 @@ package jaefactory.newboard.controller.api;
 
 import jaefactory.newboard.domain.user.User;
 import jaefactory.newboard.dto.CommonResDto;
+import jaefactory.newboard.dto.SignUpDto;
 import jaefactory.newboard.service.AuthService;
 import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 public class UserApiController {
@@ -25,7 +28,8 @@ public class UserApiController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/api/user/join")
-    public CommonResDto<?> save(@RequestBody User user) {
+    public CommonResDto<?> save(@Valid @RequestBody SignUpDto signUpDto) {
+        User user = signUpDto.toEntity();
         authService.join(user);
         return new CommonResDto<Integer>(HttpStatus.OK.value(),"ok", 1);
     }
@@ -35,7 +39,6 @@ public class UserApiController {
         userService.userUpdate(user);
         // 여기서는 트랜잭션이 종료되기 때문에 DB에 값은 변경이 됐음.
         // 하지만 세션값은 변경되지 않은 상태이기 때문에 우리가 직접 세션값을 변경해줄 것임.
-        // 세션 등록
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
