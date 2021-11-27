@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jaefactory.newboard.domain.oauth.KakaoProfile;
 import jaefactory.newboard.domain.oauth.OAuthToken;
 import jaefactory.newboard.domain.user.User;
-import jaefactory.newboard.service.AuthService;
 import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +33,6 @@ public class AuthController {
     private String CLIENT_CODE = "19ec158ac89f2be7a8713d1bec482fb9";
 
     private final UserService userService;
-    private final AuthService authService;
     private final AuthenticationManager authenticationManager;
 
     @GetMapping("/auth/kakao/callback")
@@ -122,7 +120,7 @@ public class AuthController {
 
         User originUser = userService.findUser(kakaoUser.getUsername());
         if(originUser.getUsername() == null) {
-            authService.join(kakaoUser);
+            userService.join(kakaoUser);
         }
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), kakaoKey));
@@ -130,21 +128,4 @@ public class AuthController {
 
         return "redirect:/";
     }
-
-//    @PostMapping("/auth/signup")
-//    public String signUp(@Valid SignUpDto signUpDto, BindingResult bindingResult) {
-//
-//        if (bindingResult.hasErrors()) {
-//            Map<String, String> errorMap = new HashMap<>();
-//
-//            for (FieldError error : bindingResult.getFieldErrors()) {
-//                errorMap.put(error.getField(), error.getDefaultMessage());
-//            }
-//            throw new CustomValidationException("유효성 검사 실패", errorMap);
-//        } else {
-//            User user = signUpDto.toEntity();
-//            User userEntity = authService.join(user);
-//            return "/auth/signin";
-//        }
-//    }
 }

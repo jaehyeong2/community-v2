@@ -12,18 +12,13 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class ReplyService {
+public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    @Transactional(readOnly = true)
-    public List<Comment> getAllReplies() {
-        return commentRepository.findAll();
-    }
-
     @Transactional
     public void saveComment(CommentSaveRequestDto commentSaveRequestDto){
-        int result = commentRepository.mSave(commentSaveRequestDto.getUserId(), commentSaveRequestDto.getBoardId(), commentSaveRequestDto.getContent());
+       commentRepository.mSave(commentSaveRequestDto.getUserId(), commentSaveRequestDto.getBoardId(), commentSaveRequestDto.getContent());
     }
 
     @Transactional

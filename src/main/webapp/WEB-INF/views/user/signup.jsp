@@ -5,10 +5,10 @@
 <div class="container">
     <h3 style="margin-top: 10px">회원가입 페이지</h3>
 
-    <form style="margin-top: 20px">
+    <form style="margin-top: 20px" action="/user/signup" method="post">
         <div class="form-group">
             <label for="realName">이름</label>
-            <input type="text" name="realName" id="realName" required placeholder="이름을 입력하세요 (20자 이내)" class="form-control form-control-lg" maxlength="20">
+            <input type="text" name="realName" id="realName" required placeholder="이름을 입력하세요 (20자 이내)" class="form-control form-control-lg">
         </div>
 
         <div class="form-group">
@@ -29,12 +29,12 @@
             <small id="emailHelp" class="form-text text-muted">이메일은 다른 용도로 사용되지 않습니다</small>
         </div>
 
-    </form>
-
-    <button id="btn-save" type="button" class="btn btn-dark btn-block col-sm-1" style="margin-top: 10px">회원가입</button>
+        <input id="btn-save" type="submit" value="회원가입" class="btn btn-dark btn-block col-sm-1" style="margin-top: 10px">
         <br />
         <span > 이미 계정이 있으신가요? <a class="linkControl" href="/user/signin">로그인</a></span>
         <br />
+
+    </form>
 </div>
 
 <script src="/js/user.js"></script>

@@ -4,8 +4,10 @@ import jaefactory.newboard.config.auth.PrincipalDetails;
 import jaefactory.newboard.domain.board.Board;
 import jaefactory.newboard.dto.CommonResDto;
 import jaefactory.newboard.service.BoardService;
-import jaefactory.newboard.service.ReplyService;
+import jaefactory.newboard.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,24 +18,24 @@ import javax.validation.Valid;
 public class BoardApiController {
 
     private final BoardService boardService;
-    private final ReplyService replyService;
+    private final CommentService commentService;
 
     @PostMapping("/api/board")
-    public CommonResDto<?> save(@RequestBody @Valid Board board, @AuthenticationPrincipal PrincipalDetails principal){
+    public ResponseEntity<?> save(@RequestBody @Valid Board board, @AuthenticationPrincipal PrincipalDetails principal){
         boardService.addBoard(board,principal.getUser());
-        return new CommonResDto<Integer>(1,"ok",1);
+        return new ResponseEntity<>(new CommonResDto<>(1,"ok",1), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/board/{id}")
-    public CommonResDto<?> delete(@PathVariable int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         boardService.deleteBoardById(id);
-        return new CommonResDto<Integer>(1,"ok",1);
+        return new ResponseEntity<>(new CommonResDto<Integer>(1,"ok",1),HttpStatus.OK);
     }
 
     @PutMapping("/api/board/{id}")
-    public CommonResDto<?> update(@PathVariable int id,@RequestBody Board board){
+    public ResponseEntity<?> update(@PathVariable int id,@RequestBody Board board){
         boardService.updateBoardById(id,board);
-        return new CommonResDto<Integer>(1,"ok",1);
+        return new ResponseEntity<>(new CommonResDto<>(1,"ok",1),HttpStatus.OK);
     }
 
 //    //Reply

@@ -4,9 +4,11 @@ import jaefactory.newboard.domain.user.User;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
 public class SignUpDto {
+    @Size(min = 2, max = 20)
     @NotBlank
     private String username;
     @NotBlank
