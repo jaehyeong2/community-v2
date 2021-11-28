@@ -11,11 +11,11 @@ public class Script {
         return sb.toString();
     }
 
-    public static String success() {
-        StringBuffer sb = new StringBuffer();
-        sb.append("<script>");
-        sb.append("alert('회원가입이 완료되었습니다.');");
-        sb.append("</script>");
-        return sb.toString();
-    }
+//    public static String success() {
+//        StringBuffer sb = new StringBuffer();
+//        sb.append("<script>");
+//        sb.append("alert('회원가입이 완료되었습니다.');");
+//        sb.append("</script>");
+//        return sb.toString();
+//    }
 }

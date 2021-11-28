@@ -13,7 +13,11 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(CustomValidationException.class)
     public String validationException(CustomValidationException e) {
-        return Script.back(e.getErrorMap().toString());
+        if(e.getErrorMap() == null) {
+            return Script.back(e.getMessage());
+        }else {
+            return Script.back(e.getErrorMap().toString());
+        }
 //        return new CommonResDto<Map<String,String>>(-1,e.getMessage(),e.getErrorMap()); // 에러 상황 => statusCode -1
     }
 }

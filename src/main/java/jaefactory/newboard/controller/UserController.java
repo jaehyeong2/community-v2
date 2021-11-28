@@ -47,7 +47,7 @@ public class UserController {
         } else {
             User user = signUpDto.toEntity();
             User userEntity = userService.join(user);
-            Script.success();
+//            Script.success();
             return "/user/signin";
         }
     }

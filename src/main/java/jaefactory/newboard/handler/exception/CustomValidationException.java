@@ -3,6 +3,7 @@ package jaefactory.newboard.handler.exception;
 import java.util.Map;
 
 public class CustomValidationException extends RuntimeException {
+
     private Map<String,String> errorMap;
 
     public CustomValidationException(String message, Map<String, String> errorMap) {

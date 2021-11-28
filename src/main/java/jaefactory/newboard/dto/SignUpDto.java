@@ -2,6 +2,7 @@ package jaefactory.newboard.dto;
 
 import jaefactory.newboard.domain.user.User;
 import lombok.Data;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 public class SignUpDto {
     @Size(min = 2, max = 20)
     @NotBlank
+    @UniqueElements
     private String username;
     @NotBlank
     private String realName;
