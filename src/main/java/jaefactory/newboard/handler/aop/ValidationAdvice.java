@@ -14,9 +14,9 @@ public class ValidationAdvice {
     public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
         for(Object arg:args){
-            if(args instanceof BindingResult){
-                BindingResult bindingResult =
-            }
+//            if(args instanceof BindingResult){
+//                BindingResult bindingResult =
+//            }
         }
         return proceedingJoinPoint.proceed();
     }
