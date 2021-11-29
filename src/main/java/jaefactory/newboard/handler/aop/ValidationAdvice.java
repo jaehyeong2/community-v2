@@ -13,11 +13,11 @@ public class ValidationAdvice {
     @Around("execution(* jaefactory.newboard.controller.api.*Controller.*(..))")
     public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
-        for(Object arg:args){
-//            if(args instanceof BindingResult){
-//                BindingResult bindingResult =
-//            }
-        }
+//        for(Object arg:args){
+////            if(args instanceof BindingResult){
+////                BindingResult bindingResult =
+////            }
+//        }
         return proceedingJoinPoint.proceed();
     }
 
