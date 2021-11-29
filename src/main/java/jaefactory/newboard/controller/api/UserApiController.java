@@ -33,6 +33,6 @@ public class UserApiController {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return new ResponseEntity<>(new CommonResDto<Integer>(HttpStatus.OK.value(),"ok", 1),HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResDto<>(1,"회원수정 완료", 1),HttpStatus.OK);
     }
 }

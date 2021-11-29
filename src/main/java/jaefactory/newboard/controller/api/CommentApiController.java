@@ -20,7 +20,7 @@ public class CommentApiController {
     @PostMapping("/api/board/{boardId}/comment")
     public ResponseEntity<?> commentSave(@RequestBody @Valid CommentSaveRequestDto commentSaveRequestDto, BindingResult bindingResult){
         commentService.saveComment(commentSaveRequestDto);
-        return new ResponseEntity<>(new CommonResDto<>(1,"댓글작성완료","!"), HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResDto<>(1,"댓글작성완료","!"), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/api/comment/{commentId}")

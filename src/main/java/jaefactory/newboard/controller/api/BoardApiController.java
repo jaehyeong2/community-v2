@@ -23,31 +23,18 @@ public class BoardApiController {
     @PostMapping("/api/board")
     public ResponseEntity<?> save(@RequestBody @Valid Board board, @AuthenticationPrincipal PrincipalDetails principal){
         boardService.addBoard(board,principal.getUser());
-        return new ResponseEntity<>(new CommonResDto<>(1,"ok",1), HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResDto<>(1,"글 작성 완료",1), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/board/{id}")
     public ResponseEntity<?> delete(@PathVariable int id){
         boardService.deleteBoardById(id);
-        return new ResponseEntity<>(new CommonResDto<Integer>(1,"ok",1),HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResDto<Integer>(1,"글 삭제 완료",1),HttpStatus.OK);
     }
 
     @PutMapping("/api/board/{id}")
     public ResponseEntity<?> update(@PathVariable int id,@RequestBody Board board){
         boardService.updateBoardById(id,board);
-        return new ResponseEntity<>(new CommonResDto<>(1,"ok",1),HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResDto<>(1,"글 수정 완료",1),HttpStatus.OK);
     }
-
-//    //Reply
-//    @PostMapping("/api/board/{boardId}/reply")
-//    public CommonResDto<?> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto){
-//        replyService.saveReply(replySaveRequestDto);
-//        return new CommonResDto<Integer>(1,"ok",1);
-//    }
-//
-//    @DeleteMapping("/api/board/{boardId}/reply/{replyId}")
-//    public CommonResDto<?> replyDeleteById(@PathVariable int replyId){
-//        replyService.deleteReplyById(replyId);
-//        return new CommonResDto<Integer>(1,"ok",1);
-//    }
 }
