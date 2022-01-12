@@ -26,11 +26,6 @@ Database
 
 - Mysql
 
-AWS
-
-- EC2
-- RDS
-
 ### 프론트엔드
 
 - Javascript
