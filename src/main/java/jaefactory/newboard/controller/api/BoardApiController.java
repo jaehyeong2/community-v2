@@ -27,13 +27,13 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/api/board/{id}")
-    public ResponseEntity<?> delete(@PathVariable int id){
+    public ResponseEntity<?> delete(@PathVariable Long id){
         boardService.deleteBoardById(id);
         return new ResponseEntity<>(new CommonResDto<Integer>(1,"글 삭제 완료",1),HttpStatus.OK);
     }
 
     @PutMapping("/api/board/{id}")
-    public ResponseEntity<?> update(@PathVariable int id,@RequestBody Board board){
+    public ResponseEntity<?> update(@PathVariable Long id,@RequestBody Board board){
         boardService.updateBoardById(id,board);
         return new ResponseEntity<>(new CommonResDto<>(1,"글 수정 완료",1),HttpStatus.OK);
     }

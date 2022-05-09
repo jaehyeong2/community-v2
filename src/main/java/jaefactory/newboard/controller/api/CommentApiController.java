@@ -17,14 +17,14 @@ public class CommentApiController {
 
     private final CommentService commentService;
 
-    @PostMapping("/api/board/{boardId}/comment")
-    public ResponseEntity<?> commentSave(@RequestBody @Valid CommentSaveRequestDto commentSaveRequestDto, BindingResult bindingResult){
-        commentService.saveComment(commentSaveRequestDto);
-        return new ResponseEntity<>(new CommonResDto<>(1,"댓글작성완료","!"), HttpStatus.CREATED);
-    }
+//    @PostMapping("/api/board/{boardId}/comment")
+//    public ResponseEntity<?> commentSave(@RequestBody @Valid CommentSaveRequestDto commentSaveRequestDto, BindingResult bindingResult){
+//        commentService.saveComment(commentSaveRequestDto);
+//        return new ResponseEntity<>(new CommonResDto<>(1,"댓글작성완료","!"), HttpStatus.CREATED);
+//    }
 
     @DeleteMapping("/api/comment/{commentId}")
-    public ResponseEntity<?> commentDelete(@PathVariable int commentId){
+    public ResponseEntity<?> commentDelete(@PathVariable Long commentId){
         commentService.deleteReplyById(commentId);
         return new ResponseEntity<>(new CommonResDto<>(1,"댓글삭제",null),HttpStatus.OK);
     }

@@ -29,7 +29,6 @@ dependencies {
 	implementation 'javax.servlet:jstl'
 	implementation 'org.springframework.security:spring-security-taglibs'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	implementation 'javax.servlet:jstl:1.2'
 	implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 	implementation 'io.springfox:springfox-swagger2:2.9.2'

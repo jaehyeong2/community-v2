@@ -16,13 +16,13 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    @Transactional
-    public void saveComment(CommentSaveRequestDto commentSaveRequestDto){
-       commentRepository.mSave(commentSaveRequestDto.getUserId(), commentSaveRequestDto.getBoardId(), commentSaveRequestDto.getContent());
-    }
+//    @Transactional
+//    public void saveComment(CommentSaveRequestDto commentSaveRequestDto){
+//       commentRepository.mSave(commentSaveRequestDto.getUserId(), commentSaveRequestDto.getBoardId(), commentSaveRequestDto.getContent());
+//    }
 
     @Transactional
-    public void deleteReplyById(int id){
+    public void deleteReplyById(Long id){
         commentRepository.deleteById(id);
     }
 }

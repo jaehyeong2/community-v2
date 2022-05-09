@@ -25,7 +25,7 @@ public class UserApiController {
     private final AuthenticationManager authenticationManager;
 
     @PutMapping("/user")
-    public ResponseEntity<?> update(@RequestBody User user) { // key=value, x-www-form-urlencoded
+    public ResponseEntity<?> update(@RequestBody User user) {
         userService.userUpdate(user);
         // 트랜잭션이 종료되기 때문에 DB에 값 변경이 됐음.
         // 세션값은 변경되지 않은 상태 => 직접 세션값을 변경필요

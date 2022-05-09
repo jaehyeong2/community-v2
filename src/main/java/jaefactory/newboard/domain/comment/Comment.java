@@ -1,5 +1,6 @@
 package jaefactory.newboard.domain.comment;
 
+import jaefactory.newboard.domain.BaseTimeEntity;
 import jaefactory.newboard.domain.board.Board;
 import jaefactory.newboard.domain.user.User;
 import lombok.Getter;
@@ -10,12 +11,12 @@ import java.time.LocalDateTime;
 
 @Getter @Setter
 @Entity
-public class Comment {
+public class Comment extends BaseTimeEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "comment_id")
-    private int id;
+    private Long id;
 
     @Column(nullable = false, length = 200)
     private String content;
@@ -28,8 +29,4 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Board board;
 
-    private LocalDateTime createDate;
-
-    @PrePersist
-    public void createDate() { this.createDate = LocalDateTime.now();}
 }

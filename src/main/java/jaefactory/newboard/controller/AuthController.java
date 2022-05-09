@@ -9,6 +9,7 @@ import jaefactory.newboard.domain.oauth.OAuthToken;
 import jaefactory.newboard.domain.user.User;
 import jaefactory.newboard.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class AuthController {
@@ -103,7 +105,13 @@ public class AuthController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
+//
+//        log.info("카카오 아이디(번호) : {} ",kakaoProfile.getId());
+//        log.info("카카오 이메일 : {} ",kakaoProfile.getKakao_account().getEmail();
+//        log.info("블로그서버 유저네임 : {} ",kakaoProfile.getId());
+//        log.info("블로그서버 이메일  : {} ",kakaoProfile.getId());
+//        log.info("블로그서버 패스워드 : {} ",kakaoProfile.getId());
+//
         System.out.println("카카오 아이디(번호) : "+kakaoProfile.getId());
         System.out.println("카카오 이메일 : "+kakaoProfile.getKakao_account().getEmail());
 

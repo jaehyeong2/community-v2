@@ -1,6 +1,7 @@
 package jaefactory.newboard.domain.user;
 
 
+import jaefactory.newboard.domain.BaseTimeEntity;
 import jaefactory.newboard.domain.board.Board;
 import lombok.*;
 
@@ -14,12 +15,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class User extends BaseTimeEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "user_id")
-    private int id;
+    private Long id;
 
     @Column(unique = true)
     private String username; //아이디
@@ -37,10 +38,5 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
-
-    private LocalDateTime createDate;
-
-    @PrePersist
-    public void createDate() { this.createDate = LocalDateTime.now();}
 
 }
