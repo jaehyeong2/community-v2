@@ -4,7 +4,6 @@
 - 카카오 로그인(OAuth)
 - 글 생성/수정/삭제
 - 댓글 생성/삭제
-- aws 배포
 
 ## 📋 개발환경
 
@@ -25,11 +24,6 @@ Build tool
 Database
 
 - Mysql
-
-AWS
-
-- EC2
-- RDS
 
 ### 프론트엔드
 
