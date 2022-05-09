@@ -6,13 +6,12 @@ import jaefactory.newboard.domain.board.Board;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Builder
-@Getter @Setter
-@NoArgsConstructor
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {
@@ -24,7 +23,7 @@ public class User extends BaseTimeEntity {
 
     @Column(unique = true)
     private String username; //아이디
-    private String realName; //이름
+    private String name; //이름
 
     @Column(nullable = false)
     private String password;
@@ -39,4 +38,15 @@ public class User extends BaseTimeEntity {
     @OneToMany(mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
 
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void updateName(String name) {
+        this.name = name;
+    }
 }

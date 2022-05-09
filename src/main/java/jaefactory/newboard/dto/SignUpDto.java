@@ -13,7 +13,7 @@ public class SignUpDto {
     @NotBlank
     private String username;
     @NotBlank
-    private String realName;
+    private String name;
     @NotBlank
     private String password;
     @NotBlank
@@ -21,7 +21,7 @@ public class SignUpDto {
 
     public User toEntity() {
         return User.builder()
-                .username(username).realName(realName).password(password).email(email)
+                .username(username).name(name).password(password).email(email)
                 .build();
     }
 

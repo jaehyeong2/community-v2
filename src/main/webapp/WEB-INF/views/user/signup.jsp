@@ -8,7 +8,7 @@
     <form style="margin-top: 20px" action="/user/signup" method="post">
         <div class="form-group">
             <label for="realName">이름</label>
-            <input type="text" name="realName" id="realName" required placeholder="이름을 입력하세요 (20자 이내)" class="form-control form-control-lg" maxlength="20">
+            <input type="text" name="name" id="name" required placeholder="이름을 입력하세요 (20자 이내)" class="form-control form-control-lg" maxlength="20">
         </div>
 
         <div class="form-group">

@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -20,7 +22,7 @@ public class UserService {
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
 
-        user.setPassword(encPassword);
+        user.changePassword(encPassword);
         user.setRole("Role_USER");
         User userEntity = userRepository.save(user);
         return userEntity;
@@ -28,8 +30,8 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User findUser(String username){
-        User user = userRepository.findByUsername(username).orElseGet(()->{
-            return new User(); // 빈 객체 리턴
+        User user = userRepository.findByUsername(username).orElseThrow(() ->{
+            throw new NoSuchElementException("조회 실패");
         });
         return user;
     }
@@ -44,8 +46,8 @@ public class UserService {
         if(persistence.getOauth() == null || persistence.getOauth().equals("")) {
             String rawPassword = user.getPassword();
             String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-            persistence.setPassword(encPassword);
-            persistence.setRealName(user.getRealName());
+            persistence.changePassword(encPassword);
+            persistence.updateName(user.getName());
         }
     }
 }
